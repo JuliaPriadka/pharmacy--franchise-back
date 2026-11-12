@@ -5,6 +5,7 @@ import 'dotenv/config';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import MedicinesRouter from './routers/medicines.js';
+import PharmaciesRouter from './routers/pharmacies.js';
 
 export const setupServer = () => {
   const port = Number(process.env.PORT) || 3000;
@@ -25,6 +26,8 @@ export const setupServer = () => {
   });
 
   app.use(MedicinesRouter);
+
+  app.use(PharmaciesRouter);
 
   app.use(notFoundHandler);
 
