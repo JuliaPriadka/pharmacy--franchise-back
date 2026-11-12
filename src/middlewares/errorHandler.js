@@ -1,6 +1,7 @@
 import { HttpError } from 'http-errors';
 
-export const errorHandler = (req, res, next, error) => {
+export const errorHandler = (error, req, res, next) => {
+  console.log(error, 'HttpError');
   if (error instanceof HttpError) {
     res
       .status(error.status)
