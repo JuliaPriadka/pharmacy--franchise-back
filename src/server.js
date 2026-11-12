@@ -4,6 +4,7 @@ import express from 'express';
 import 'dotenv/config';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
+import MedicinesRouter from './routers/medicines.js';
 
 export const setupServer = () => {
   const port = Number(process.env.PORT) || 3000;
@@ -22,6 +23,8 @@ export const setupServer = () => {
   app.get('/', (req, res) => {
     res.send({ message: 'Hello world' });
   });
+
+  app.use(MedicinesRouter);
 
   app.use(notFoundHandler);
 
